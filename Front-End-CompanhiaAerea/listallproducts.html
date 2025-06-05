@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0,
+                                            maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GOLDAIRLINES</title>
+    <link rel="stylesheet" href="styles/estilo.css">
+    <script type="text/javascript" src="scripts/script_listallproducts.js"></script>
+</head>
+<body>
+    <div class="mydiv-1">
+        <form id="formid" onsubmit="getproductbyid(); return false">
+            <input type="text" name="id" placeholder="Consultar por ID">
+        <input type="submit" value="Consultar por ID">
+        </form>
+        <a href="listallproducts.html">Consultar Todos</a> <br>
+        <a href="addproduct.html">Inserir</a>
+        <div id="loading">
+            <span>Buscando produtos...</span>
+        </div>
+        <h1>GOLD AEROCOMPANY</h1>
+        <table>
+            <tbody id="products"></tbody>
+        </table>
+    </div>
+</body>
+</html>
+<!-- Elementos opcionais para nuvens e avião pequeno -->
+<div class="clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+</div>
+<div class="airplane-small"></div>
+<div class="moon"></div>

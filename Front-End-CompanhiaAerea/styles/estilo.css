@@ -1,0 +1,895 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0a0a2a 0%, #1a1a4a 50%, #2a2a5a 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* LUA BRILHANTE - NOVO ELEMENTO */
+.moon {
+    position: fixed;
+    top: 8%;
+    right: 12%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%,
+        #ffffff 0%,
+        #f8f8ff 20%,
+        #e6e6fa 40%,
+        #d3d3d3 70%,
+        #c0c0c0 100%);
+    border-radius: 50%;
+    z-index: 4;
+    pointer-events: none;
+    box-shadow:
+        0 0 60px rgba(255, 255, 255, 0.6),
+        0 0 120px rgba(255, 255, 255, 0.4),
+        0 0 180px rgba(255, 255, 255, 0.2),
+        inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+        inset 5px 5px 15px rgba(255, 255, 255, 0.3);
+    animation: moon-glow 6s ease-in-out infinite alternate;
+}
+
+/* Crateras da lua */
+.moon::before {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    box-shadow:
+        -20px 15px 0 -2px rgba(0, 0, 0, 0.08),
+        10px -10px 0 -4px rgba(0, 0, 0, 0.06),
+        -15px -20px 0 -6px rgba(0, 0, 0, 0.05),
+        20px 25px 0 -3px rgba(0, 0, 0, 0.07);
+}
+
+/* Halo da lua */
+.moon::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 30%,
+        transparent 70%);
+    border-radius: 50%;
+    animation: moon-halo 8s ease-in-out infinite alternate;
+}
+
+@keyframes moon-glow {
+    0% {
+        box-shadow:
+            0 0 60px rgba(255, 255, 255, 0.6),
+            0 0 120px rgba(255, 255, 255, 0.4),
+            0 0 180px rgba(255, 255, 255, 0.2),
+            inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+            inset 5px 5px 15px rgba(255, 255, 255, 0.3);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow:
+            0 0 80px rgba(255, 255, 255, 0.8),
+            0 0 160px rgba(255, 255, 255, 0.5),
+            0 0 240px rgba(255, 255, 255, 0.3),
+            inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+            inset 5px 5px 15px rgba(255, 255, 255, 0.4);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes moon-halo {
+    0% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+    100% { opacity: 0.6; transform: scale(1.1) rotate(360deg); }
+}
+
+/* Céu estrelado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 200px 60px, #fff, transparent),
+        radial-gradient(2px 2px at 240px 90px, #fff, transparent),
+        radial-gradient(1px 1px at 280px 20px, #fff, transparent),
+        radial-gradient(1px 1px at 320px 50px, #fff, transparent),
+        radial-gradient(2px 2px at 360px 80px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 400px 200px;
+    animation: twinkle 4s ease-in-out infinite alternate;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Estrelas grandes brilhantes */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(3px 3px at 80px 50px, #ffd700, transparent),
+        radial-gradient(4px 4px at 300px 40px, #ffd700, transparent),
+        radial-gradient(3px 3px at 150px 150px, #ffd700, transparent),
+        radial-gradient(4px 4px at 250px 120px, #ffd700, transparent),
+        radial-gradient(3px 3px at 350px 160px, #ffd700, transparent);
+    background-repeat: repeat;
+    background-size: 500px 300px;
+    animation: golden-twinkle 3s ease-in-out infinite alternate;
+    z-index: 2;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+@keyframes golden-twinkle {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Container principal */
+.mydiv-1 {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffd700;
+    text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+input[type="text"] {
+    padding: 15px 25px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    color: #ffffff;
+    font-size: 16px;
+    backdrop-filter: blur(15px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    min-width: 250px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #ffd700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+    box-shadow:
+        0 0 30px rgba(255, 215, 0, 0.4),
+        0 0 60px rgba(255, 215, 0, 0.2),
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px) scale(1.02);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+}
+
+input[type="submit"] {
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    border: none;
+    border-radius: 30px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 10px 30px rgba(255, 215, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 20px 40px rgba(255, 215, 0, 0.4),
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffed4e 100%);
+}
+
+input[type="submit"]:hover::before {
+    left: 100%;
+}
+
+input[type="submit"]:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* Links */
+a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 15px 30px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.4s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+a:hover {
+    color: #000;
+    border-color: #ffd700;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 15px 35px rgba(255, 215, 0, 0.3),
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+a:hover::before {
+    width: 100%;
+}
+
+a:hover::after {
+    width: 120px;
+    height: 120px;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    margin-top: 40px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.6) 100%);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 215, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(255, 215, 0, 0.1);
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+}
+
+table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        #ffd700 20%,
+        #ffed4e 50%,
+        #ffd700 80%,
+        transparent 100%);
+    animation: table-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes table-shimmer {
+    0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* Cabeçalho da tabela */
+thead {
+    background: linear-gradient(135deg,
+        rgba(255, 215, 0, 0.25) 0%,
+        rgba(255, 215, 0, 0.15) 50%,
+        rgba(255, 215, 0, 0.25) 100%);
+    border-bottom: 3px solid rgba(255, 215, 0, 0.4);
+    position: relative;
+}
+
+thead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        #ffd700,
+        #ffed4e,
+        #ffd700,
+        transparent);
+    animation: header-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes header-glow {
+    0% { opacity: 0.6; transform: scaleX(0.9); }
+    100% { opacity: 1; transform: scaleX(1); }
+}
+
+thead th {
+    padding: 25px 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: #ffd700;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    text-shadow:
+        0 0 15px rgba(255, 215, 0, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 215, 0, 0.2);
+    position: relative;
+    background: linear-gradient(135deg,
+        rgba(255, 215, 0, 0.1),
+        rgba(255, 215, 0, 0.05));
+    transition: all 0.3s ease;
+}
+
+thead th:last-child {
+    border-right: none;
+}
+
+thead th:hover {
+    background: linear-gradient(135deg,
+        rgba(255, 215, 0, 0.2),
+        rgba(255, 215, 0, 0.1));
+    text-shadow:
+        0 0 20px rgba(255, 215, 0, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+thead th::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+thead th:hover::before {
+    opacity: 1;
+}
+
+/* Corpo da tabela */
+tbody {
+    color: #ffffff;
+}
+
+tbody tr {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.01));
+}
+
+tbody tr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg,
+        #ffd700,
+        rgba(255, 215, 0, 0.5),
+        transparent);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+tbody tr:hover {
+    background: linear-gradient(135deg,
+        rgba(255, 215, 0, 0.15) 0%,
+        rgba(255, 215, 0, 0.08) 50%,
+        rgba(255, 215, 0, 0.15) 100%);
+    transform: translateY(-3px) scale(1.005);
+    box-shadow:
+        0 10px 30px rgba(255, 215, 0, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+tbody tr:hover::before {
+    width: 4px;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    padding: 22px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    font-size: 15px;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+tbody td:last-child {
+    border-right: none;
+}
+
+/* Efeito zebra aesthetic */
+tbody tr:nth-child(even) {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.04),
+        rgba(255, 255, 255, 0.02));
+}
+
+tbody tr:nth-child(odd) {
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.06),
+        rgba(0, 0, 0, 0.03));
+}
+
+/* Efeito de brilho aesthetic nas células */
+tbody td::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center,
+        rgba(255, 215, 0, 0.1),
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+tbody tr:hover td::after {
+    opacity: 1;
+}
+
+/* Estilo para primeira coluna */
+tbody td:first-child {
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+tbody td:first-child::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(180deg, #ffd700, #ffed4e);
+    border-radius: 2px;
+    transition: height 0.3s ease;
+    transform: translateY(-50%);
+}
+
+tbody tr:hover td:first-child::before {
+    height: 60%;
+}
+
+/* Scroll personalizado para tabela */
+.table-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 15px;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffd700, #ffed4e);
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ffed4e, #ffd700);
+}
+
+/* Loading */
+#loading {
+    text-align: center;
+    color: #ffd700;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+/* Nuvens */
+.clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    opacity: 0.6;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+}
+
+.cloud-1 {
+    width: 100px;
+    height: 50px;
+    top: 20%;
+    left: 10%;
+    animation: float-cloud-1 20s ease-in-out infinite;
+}
+
+.cloud-1::before {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    left: 10px;
+}
+
+.cloud-1::after {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    right: 10px;
+}
+
+.cloud-2 {
+    width: 80px;
+    height: 40px;
+    top: 15%;
+    right: 15%;
+    animation: float-cloud-2 25s ease-in-out infinite;
+}
+
+.cloud-2::before {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 10px;
+}
+
+.cloud-2::after {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    right: 15px;
+}
+
+.cloud-3 {
+    width: 120px;
+    height: 60px;
+    top: 30%;
+    left: 60%;
+    animation: float-cloud-3 30s ease-in-out infinite;
+}
+
+.cloud-3::before {
+    width: 90px;
+    height: 90px;
+    top: -45px;
+    left: 15px;
+}
+
+.cloud-3::after {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+    right: 15px;
+}
+
+@keyframes float-cloud-1 {
+    0%, 100% { transform: translateX(0px) translateY(0px); }
+    33% { transform: translateX(30px) translateY(-10px); }
+    66% { transform: translateX(-20px) translateY(10px); }
+}
+
+@keyframes float-cloud-2 {
+    0%, 100% { transform: translateX(0px) translateY(0px); }
+    50% { transform: translateX(-40px) translateY(-15px); }
+}
+
+@keyframes float-cloud-3 {
+    0%, 100% { transform: translateX(0px) translateY(0px); }
+    25% { transform: translateX(-30px) translateY(15px); }
+    75% { transform: translateX(25px) translateY(-10px); }
+}
+
+/* Avião */
+.airplane-small {
+    position: fixed;
+    top: 25%;
+    left: -150px;
+    width: 100px;
+    height: 100px;
+    z-index: 5;
+    pointer-events: none;
+    animation: fly-across 15s linear infinite;
+
+    /* Use o SVG do avião aqui */
+    background-image: url('../images/airplane.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Efeitos visuais para o SVG */
+    filter:
+        drop-shadow(0 0 15px rgba(255, 215, 0, 0.6))
+        drop-shadow(0 0 25px rgba(255, 215, 0, 0.3))
+        brightness(1.2)
+        contrast(1.1);
+
+    /* Caso você queira uma cor dourada no SVG */
+    /* Descomente a linha abaixo se o SVG for monocromático */
+    /* filter: hue-rotate(45deg) saturate(2) brightness(1.3) drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)); */
+}
+
+@keyframes fly-across {
+    0% {
+        left: -150px;
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(10px) rotate(2deg);
+    }
+    75% {
+        transform: translateY(-15px) rotate(-3deg);
+    }
+    100% {
+        left: calc(100vw + 150px);
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* Efeito de trilha do avião */
+.airplane-small::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), rgba(255, 215, 0, 0.3));
+    border-radius: 3px;
+    animation: trail 0.8s ease-in-out infinite;
+    transform: translateY(-50%);
+}
+
+@keyframes trail {
+    0% { opacity: 1; width: 30px; }
+    100% { opacity: 0; width: 10px; }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .mydiv-1 {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="text"],
+    input[type="submit"] {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    a {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Tabela responsiva */
+    .table-container {
+        overflow-x: auto;
+        max-height: 400px;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    thead th,
+    tbody td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    tbody td:first-child {
+        position: sticky;
+        left: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+    }
+
+    /* Lua responsiva */
+    .moon {
+        width: 80px;
+        height: 80px;
+        top: 5%;
+        right: 5%;
+    }
+
+    .moon::after {
+        width: 160px;
+        height: 160px;
+        top: -40%;
+        left: -40%;
+    }
+}
+
+/* Indicador de carregamento melhorado */
+#loading {
+    text-align: center;
+    color: #ffd700;
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+#loading span {
+    display: inline-block;
+    animation: pulse-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-loading {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+}
